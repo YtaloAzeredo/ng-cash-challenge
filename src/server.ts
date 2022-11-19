@@ -5,6 +5,7 @@ import 'reflect-metadata'
 import { errorHandler } from './shared/infra/http/middlewares/error-handler.middleware'
 import { middlewares } from './shared/infra/http/middlewares'
 import { routes } from './shared/infra/http/routes'
+import '@shared/container'
 
 const port = process.env.PORT
 
