@@ -15,7 +15,7 @@ export class CreateUsersUseCase implements UseCase {
   ) {}
 
   async execute (userData: UsersModel): Promise<UsersModel> {
-    const userExist = await this.usersRepository.getOne({ email: userData.username })
+    const userExist = await this.usersRepository.getOne({ username: userData.username })
     if (userExist) throw new ConflictError('User already exist')
     userData.password = await this.encryptService.encrypt(userData.password)
     return this.usersRepository.store(userData)
