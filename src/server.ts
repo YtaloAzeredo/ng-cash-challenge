@@ -1,3 +1,4 @@
+import 'express-async-errors'
 import express from 'express'
 import './bootstrap'
 import './shared/infra/type-orm/database'
