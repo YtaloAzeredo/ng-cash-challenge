@@ -10,7 +10,7 @@ export const postUsersValidator = [
     .isString()
     .isLength({ min: 8 })
     .withMessage('Password must be at least 8 characters long')
-    .matches(/[0-9]+[A-Z]+/)
+    .matches(/(?=.*[0-9])+(?=.*[A-Z])+(?=.[a-z])*/)
     .withMessage('Password must contain at least one number and one capital letter'),
   defaultCheck
 ]
