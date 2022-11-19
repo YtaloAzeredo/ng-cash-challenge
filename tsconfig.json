@@ -34,7 +34,12 @@
       "@modules/*": ["src/modules/*"],
       "@errors/*": ["src/errors/*"],
       "@routes/*": ["src/routes/*"],
-      "@interfaces/*": ["src/interfaces/*"]
+      "@interfaces/*": ["src/interfaces/*"],
+      "@shared/*": ["src/shared/*"],
+      "@adapters/*": ["src/shared/adapters/*"],
+      "@container/*": ["src/shared/container/*"],
+      "@infra/*": ["src/shared/infra/*"],
+      "@presentation/*": ["src/shared/presentation/*"]
     },                                      /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
