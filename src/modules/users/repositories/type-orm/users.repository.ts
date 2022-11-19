@@ -1,6 +1,8 @@
 import { Users } from '@modules/users/models/type-orm/users.model'
+import { injectable } from 'tsyringe'
 import { UsersRepository } from '../users-repository.interface'
 
+@injectable()
 export class UserRepository implements UsersRepository {
   async getAll (): Promise<Users[]> {
     return Users.find()
