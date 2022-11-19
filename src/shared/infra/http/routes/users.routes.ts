@@ -6,7 +6,7 @@ import { postUsersValidator } from './validators/users-routes.validator'
 const router = Router()
 
 router.post(
-  '/users',
+  '/public/users',
   postUsersValidator,
   adaptRoute(CreateUsersController)
 )
