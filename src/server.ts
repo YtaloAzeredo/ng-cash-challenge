@@ -1,6 +1,6 @@
 import express from 'express'
 import './bootstrap'
-import './database'
+import './shared/infra/type-orm/database'
 import 'reflect-metadata'
 import { errorHandler } from './middlewares/error-handler.middleware'
 

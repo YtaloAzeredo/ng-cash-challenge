@@ -1,6 +1,6 @@
-import { DataSourceOptions } from 'typeorm'
+import { DataSourceOptions, createConnection, Connection } from 'typeorm'
 
-export const config: DataSourceOptions = {
+const config: DataSourceOptions = {
   type: 'postgres',
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT),
@@ -14,3 +14,15 @@ export const config: DataSourceOptions = {
   logging: false,
   synchronize: true
 }
+
+class DataBase {
+  constructor () {
+    this.connection()
+  }
+
+  async connection (): Promise<Connection> {
+    return createConnection(config)
+  }
+}
+
+export default new DataBase()
