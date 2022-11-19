@@ -2,9 +2,10 @@ import express from 'express'
 import './bootstrap'
 import './shared/infra/type-orm/database'
 import 'reflect-metadata'
-import { errorHandler } from './middlewares/error-handler.middleware'
+import { errorHandler } from './shared/infra/http/middlewares/error-handler.middleware'
+import { middlewares } from './shared/infra/http/middlewares'
+import { routes } from './shared/infra/http/routes'
 
-const app = express()
 const port = process.env.PORT
 
 const handleErrorException = () => {
@@ -18,11 +19,10 @@ const handleErrorException = () => {
 }
 
 const startApp = () => {
+  const app = express()
   app.use(express.json())
-  app.use('/', (req, res) => {
-    return res.status(200).json('hello world')
-  })
-  // routes.map((route) => app.use(route))
+  middlewares.map(middleware => app.use(middleware))
+  routes.map((route) => app.use(route))
   app.listen(port, () => {
     console.log(`Server running on port ${port}`)
   })
