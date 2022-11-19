@@ -11,13 +11,17 @@ export class CreateUsersUseCase implements UseCase {
     @inject('UsersRepository')
     private readonly usersRepository: UsersRepository,
     @inject('EncryptUseCase')
-    private readonly encryptService: Encrypt
+    private readonly encryptService: Encrypt,
+    @inject('CreateAccountsUseCase')
+    private readonly createAccountsUseCase: UseCase
   ) {}
 
   async execute (userData: UsersModel): Promise<UsersModel> {
     const userExist = await this.usersRepository.getOne({ username: userData.username })
     if (userExist) throw new ConflictError('User already exist')
     userData.password = await this.encryptService.encrypt(userData.password)
+    const userAccount = await this.createAccountsUseCase.execute({ balance: 100 })
+    userData.accountId = userAccount.id
     return this.usersRepository.store(userData)
   }
 }
