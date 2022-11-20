@@ -18,11 +18,11 @@ export class Accounts extends BaseEntity implements AccountsModel {
   @Column()
     balance!: number
 
-  @OneToMany(() => Transactions, (transaction) => transaction.debitedAccountId)
-    debitedAccountId!: Transactions[]
+  @OneToMany(() => Transactions, (transaction) => transaction.debitedAccount)
+    debitedAccount!: Transactions[]
 
-  @OneToMany(() => Transactions, (transaction) => transaction.creditedAccountId)
-    creditedAccountId!: Transactions[]
+  @OneToMany(() => Transactions, (transaction) => transaction.creditedAccount)
+    creditedAccount!: Transactions[]
 
   @CreateDateColumn()
     createdAt!: Date
