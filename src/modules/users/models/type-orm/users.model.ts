@@ -23,8 +23,11 @@ export class Users extends BaseEntity implements UsersModel {
     password!: string
 
   @OneToOne(() => Accounts)
-  @JoinColumn()
-    accountId!: Accounts
+  @JoinColumn({ name: 'accountId' })
+    account!: Accounts
+
+  @Column({ nullable: false })
+    accountId!: number
 
   @CreateDateColumn()
     createdAt!: Date

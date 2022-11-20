@@ -4,5 +4,6 @@ export interface UsersModel {
   id: number
   username: string
   password: string
-  accountId: AccountsModel
+  account: AccountsModel
+  accountId: number
 }
