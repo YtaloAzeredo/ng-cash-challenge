@@ -5,11 +5,13 @@ import { GetOneAccountsController } from '@modules/accounts/use-cases/get-one-ac
 import { WithdrawBalanceController } from '@modules/accounts/use-cases/withdraw-balance/withdraw-balance.controller'
 import { Router } from 'express'
 import { accountValidation } from '../middlewares/account-validation.middleware'
+import { userValidation } from '../middlewares/user-validation.middleware'
 
 const router = Router()
 
 router.get(
   '/accounts/users/:userId',
+  userValidation,
   adaptRoute(GetOneAccountsController)
 )
 
