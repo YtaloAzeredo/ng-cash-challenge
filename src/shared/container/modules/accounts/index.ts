@@ -1,5 +1,6 @@
 import { AccountsRepository } from '@modules/accounts/repositories/accounts-repository.interface'
 import { AccountRepository } from '@modules/accounts/repositories/type-orm/accounts.repository'
+import { BalanceTransactionUseCase } from '@modules/accounts/use-cases/balance-transaction/balance-transaction.use-case'
 import { CreateAccountsUseCase } from '@modules/accounts/use-cases/create-accounts/create-accounts.use-case'
 import { EnterBalanceUseCase } from '@modules/accounts/use-cases/enter-balance/enter-balance.use-case'
 import { GetOneAccountsUseCase } from '@modules/accounts/use-cases/get-one-accounts/get-one-accounts.use-case'
@@ -30,4 +31,9 @@ container.registerSingleton<UseCase>(
 container.registerSingleton<UseCase>(
   'WithdrawBalanceUseCase',
   WithdrawBalanceUseCase
+)
+
+container.registerSingleton<UseCase>(
+  'BalanceTransactionUseCase',
+  BalanceTransactionUseCase
 )
