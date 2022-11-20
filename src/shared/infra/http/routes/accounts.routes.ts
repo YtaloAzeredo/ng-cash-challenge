@@ -4,6 +4,7 @@ import { EnterBalanceController } from '@modules/accounts/use-cases/enter-balanc
 import { GetOneAccountsController } from '@modules/accounts/use-cases/get-one-accounts/get-one-accounts.controller'
 import { WithdrawBalanceController } from '@modules/accounts/use-cases/withdraw-balance/withdraw-balance.controller'
 import { Router } from 'express'
+import { accountValidation } from '../middlewares/account-validation.middleware'
 
 const router = Router()
 
@@ -14,16 +15,19 @@ router.get(
 
 router.post(
   '/accounts/:accountId/enter-balance',
+  accountValidation,
   adaptRoute(EnterBalanceController)
 )
 
 router.post(
   '/accounts/:accountId/withdraw-balance',
+  accountValidation,
   adaptRoute(WithdrawBalanceController)
 )
 
 router.post(
   '/accounts/:accountId/balance-transaction',
+  accountValidation,
   adaptRoute(BalanceTransactionController)
 )
 
