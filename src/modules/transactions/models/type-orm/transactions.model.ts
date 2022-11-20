@@ -18,6 +18,9 @@ export class Transactions extends BaseEntity implements TransactionsModel {
   @Column()
     value!: number
 
+  @Column()
+    code!: string
+
   @ManyToOne(() => Accounts, (account) => account.debitedAccount)
     debitedAccount!: Accounts
 

@@ -2,6 +2,7 @@ import ConflictError from '@errors/conflict.error'
 import NotFoundError from '@errors/not-found.error'
 import { AccountsModel } from '@modules/accounts/models/accounts-model.interface'
 import { AccountsRepository } from '@modules/accounts/repositories/accounts-repository.interface'
+import { TransactionCodes } from '@modules/transactions/constants/transaction-codes.enum'
 import { TransactionsModel } from '@modules/transactions/models/transactions-model.interface'
 import { TransactionsRepository } from '@modules/transactions/repositories/transactions-repository.interface'
 import { UseCase } from '@shared/presentation/protocols/use-case.interface'
@@ -33,7 +34,8 @@ export class BalanceTransactionUseCase implements UseCase {
     return this.transactionRepository.store({
       debitedAccount: foundOriginAccount.id,
       creditedAccount: foundDestinationAccount.id,
-      value: balance
+      value: balance,
+      code: TransactionCodes.transfer
     })
   }
 }

@@ -5,4 +5,5 @@ export interface TransactionsModel {
   debitedAccount?: AccountsModel | number
   creditedAccount?: AccountsModel | number
   value: number
+  code: string
 }
