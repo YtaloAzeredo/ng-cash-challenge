@@ -1,3 +1,4 @@
+import ConflictError from '@errors/conflict.error'
 import NotFoundError from '@errors/not-found.error'
 import { AccountsModel } from '@modules/accounts/models/accounts-model.interface'
 import { AccountsRepository } from '@modules/accounts/repositories/accounts-repository.interface'
@@ -21,6 +22,8 @@ export class BalanceTransactionUseCase implements UseCase {
 
   async execute (accountData: AccountData): Promise<TransactionsModel> {
     const { id: originAccountId, balance, destinationAccountId } = accountData
+    const canTransferBalance = originAccountId !== destinationAccountId
+    if (!canTransferBalance) throw new ConflictError('It is not possible to transfer the balance to yourself')
     const foundOriginAccount = await this.accountsRepository.getOne({ id: originAccountId })
     if (!foundOriginAccount) throw new NotFoundError('Origin account not found')
     const foundDestinationAccount = await this.accountsRepository.getOne({ id: destinationAccountId })

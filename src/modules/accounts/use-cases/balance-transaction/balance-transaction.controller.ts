@@ -12,7 +12,7 @@ export class BalanceTransactionController implements Controller {
 
   async handle (req: HttpRequest): Promise<HttpResponse> {
     const response = await this.balanceTransactionUseCase.execute({
-      id: req.params.accountId,
+      id: +req.params.accountId,
       balance: req.body.balance,
       destinationAccountId: req.body.destination_account_id
     })
