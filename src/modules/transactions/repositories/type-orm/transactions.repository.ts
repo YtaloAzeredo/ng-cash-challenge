@@ -2,8 +2,13 @@ import { Transactions } from '@modules/transactions/models/type-orm/transactions
 import { TransactionsRepository } from '../transactions-repository.interface'
 
 export class TransactionRepository implements TransactionsRepository {
-  async getAll (): Promise<Transactions[]> {
-    return Transactions.find()
+  async getAll (filters: { accountId: number, transactionCode: string}): Promise<Transactions[]> {
+    return Transactions.find({
+      where: [
+        { creditedAccountId: filters.accountId, code: filters.transactionCode },
+        { debitedAccountId: filters.accountId, code: filters.transactionCode }
+      ]
+    })
   }
 
   async getOne ({ id }: { id?: number }): Promise<Transactions> {
