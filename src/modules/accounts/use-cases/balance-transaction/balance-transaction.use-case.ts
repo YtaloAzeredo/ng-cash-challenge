@@ -32,8 +32,8 @@ export class BalanceTransactionUseCase implements UseCase {
     await this.withdrawBalanceUseCase.execute({ id: foundOriginAccount.id, balance })
     await this.enterBalanceUseCase.execute({ id: foundDestinationAccount.id, balance })
     return this.transactionRepository.store({
-      debitedAccount: foundOriginAccount.id,
-      creditedAccount: foundDestinationAccount.id,
+      debitedAccountId: foundOriginAccount.id,
+      creditedAccountId: foundDestinationAccount.id,
       value: balance,
       code: TransactionCodes.transfer
     })

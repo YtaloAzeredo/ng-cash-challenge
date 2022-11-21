@@ -20,7 +20,7 @@ export class EnterBalanceUseCase implements UseCase {
     if (!foundAccount) throw new NotFoundError('Account not found')
     foundAccount.balance += accountData.balance
     await this.transactionRepository.store({
-      creditedAccount: foundAccount.id,
+      creditedAccountId: foundAccount.id,
       value: accountData.balance,
       code: TransactionCodes['cash-in']
     })

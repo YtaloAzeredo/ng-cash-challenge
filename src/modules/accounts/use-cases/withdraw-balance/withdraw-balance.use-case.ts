@@ -23,7 +23,7 @@ export class WithdrawBalanceUseCase implements UseCase {
     if (!canWithdrawBalance) throw new ConflictError('Insufficient balance for withdrawal')
     foundAccount.balance -= accountData.balance
     await this.transactionRepository.store({
-      debitedAccount: foundAccount.id,
+      debitedAccountId: foundAccount.id,
       value: accountData.balance,
       code: TransactionCodes['cash-out']
     })

@@ -24,8 +24,14 @@ export class Transactions extends BaseEntity implements TransactionsModel {
   @ManyToOne(() => Accounts, (account) => account.debitedAccount)
     debitedAccount!: Accounts
 
+  @Column({ nullable: true })
+    debitedAccountId!: number
+
   @ManyToOne(() => Accounts, (account) => account.creditedAccount)
     creditedAccount!: Accounts
+
+  @Column({ nullable: true })
+    creditedAccountId!: number
 
   @CreateDateColumn()
     createdAt!: Date
